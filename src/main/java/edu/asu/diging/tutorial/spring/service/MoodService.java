@@ -17,6 +17,6 @@ public interface MoodService {
      * Reason for the mood
      * @return reason
      */
-    String getReason();
+    String getReason(String feeling);
 
 }

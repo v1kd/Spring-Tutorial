@@ -14,32 +14,33 @@ import java.util.Map;
 @Service
 public class MoodServiceImpl implements MoodService {
 
-    private static final String[] MOODS = new String[] {
-            "Happy", "Sad", "Excited"};
+    private String[] moods;
 
-    private static final Map<String, String> MOOD_MAP = new HashMap<String, String>();
-
-    static {
-        MOOD_MAP.put(MOODS[0], "No reason :)");
-        MOOD_MAP.put(MOODS[1], "I am just sad :(");
-        MOOD_MAP.put(MOODS[2], "Because I have a Humanities class today :p");
-    }
-
-    private Mood mood;
+    private Map<String, String> moodMap;
 
     @PostConstruct
     public void initMood() {
-        // Random value
-        int numMoods = MOODS.length;
-        int index = (int) Math.floor(Math.random() * numMoods);
-        this.mood = new Mood(MOODS[index], MOOD_MAP.get(MOODS[index]));
+        moods =  new String[] {
+                "Happy", "Sad", "Excited"};
+        moodMap = new HashMap<String, String>();
+
+        moodMap.put(moods[0], "No reason :)");
+        moodMap.put(moods[1], "I am just sad :(");
+        moodMap.put(moods[2], "Because I have a Humanities class today :p");
     }
 
     public Mood getCurrentMood() {
+        // Random value
+        int numMoods = moods.length;
+        int index = (int) Math.floor(Math.random() * numMoods);
+        Mood mood = new Mood(moods[index], moodMap.get(moods[index]));
         return mood;
     }
 
-    public String getReason() {
-        return mood.getReason();
+    public String getReason(String feeling) {
+        if (feeling == null)
+            return null;
+
+        return moodMap.get(feeling);
     }
 }

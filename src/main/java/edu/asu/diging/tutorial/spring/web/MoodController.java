@@ -4,6 +4,7 @@ import edu.asu.diging.tutorial.spring.domain.Mood;
 import edu.asu.diging.tutorial.spring.service.MoodService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,7 +28,6 @@ public class MoodController {
     public String getMood(Model model) {
         Mood mood = moodService.getCurrentMood();
         model.addAttribute("mood", mood);
-
         return "mood";
     }
 
@@ -36,9 +36,9 @@ public class MoodController {
      * @param model
      * @return view
      */
-    @RequestMapping(value = "/mood/reason", method = RequestMethod.GET)
-    public String getReason(Model model) {
-        String reason = moodService.getReason();
+    @RequestMapping(value = "/reason/{feeling}", method = RequestMethod.GET)
+    public String getReason(Model model, @PathVariable("feeling") String feeling) {
+        String reason = moodService.getReason(feeling);
         model.addAttribute("reason", reason);
 
         return "reason";
