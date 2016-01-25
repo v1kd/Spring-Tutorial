@@ -11,12 +11,12 @@ public interface MoodService {
      * Random mood
      * @return mood
      */
-    public Mood getCurrentMood();
+    Mood getCurrentMood();
 
     /**
      * Reason for the mood
      * @return reason
      */
-    public String getReason();
+    String getReason();
 
 }
