@@ -12,8 +12,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="edu.asu.diging.tutorial.spring" />
 
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
             <value>/WEB-INF/views/</value>
         </property>
@@ -21,4 +20,8 @@ http://www.springframework.org/schema/context/spring-context.xsd">
             <value>.jsp</value>
         </property>
     </bean>
+
+    <bean class="edu.asu.diging.tutorial.spring.service.impl.MoodServiceImpl">
+    </bean>
+
 </beans>
